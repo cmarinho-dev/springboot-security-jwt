@@ -25,7 +25,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String token = request.getHeader(JwtCreator.HEADER_AUTHORIZATION);
 
         try {
-            if (token != null && token.startsWith("Bearer ")) {
+            if (token != null && !token.isEmpty()) {
                 JwtObject tokenObject = JwtCreator.create(
                         token,
                         SecurityConfig.PREFIX,
@@ -52,6 +52,6 @@ public class JwtFilter extends OncePerRequestFilter {
 
     private List<SimpleGrantedAuthority> authorities(List<String> roles) {
         return roles.stream().map(SimpleGrantedAuthority::new)
-                .collect(Collectors.<SimpleGrantedAuthority>toList());
+                .collect(Collectors.toList());
     }
 }

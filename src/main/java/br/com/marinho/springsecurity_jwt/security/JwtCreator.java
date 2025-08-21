@@ -44,7 +44,7 @@ public class JwtCreator {
         object.setSubject(claims.getSubject());
         object.setExpiration(claims.getExpiration());
         object.setIssuedAt(claims.getIssuedAt());
-        object.setRoles(claims.get(ROLES_AUTHORITIES, String.class));
+        object.setRoles((List) claims.get(ROLES_AUTHORITIES));
 
         return object;
     }
