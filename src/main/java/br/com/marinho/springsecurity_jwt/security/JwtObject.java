@@ -10,12 +10,16 @@ public class JwtObject {
     private Date expiration;    //token expiration date
     private List<String> roles; //profile roles
 
-    public void setRoles(String... roles) {
-        this.roles = Arrays.asList(roles);
-    }
-
     public List<String> getRoles() {
         return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public void setRoles(String... roles) {
+        this.roles = Arrays.asList(roles);
     }
 
     public String getSubject() {
